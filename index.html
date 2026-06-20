@@ -1,28 +1,460 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevOps Project Showcase</title>
-    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Project Showcase</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+    /* Clean page view switching */
+    .page-view {
+        display: none;
+    }
+    .page-view.active {
+        display: block;
+    }
+    
+    .about-text-p {
+        margin-bottom: 25px !important;
+        text-align: center;
+    }
+
+    /* Services View Styling */
+    .service-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 20px;
+        text-align: left;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .service-card h3 {
+        color: #2563eb;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+    .service-card p {
+        color: #cbd5e1;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Contact View Styling */
+    .contact-info {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 30px auto;
+        text-align: center;
+    }
+    .contact-info p {
+        font-size: 18px;
+        color: #cbd5e1;
+        margin-bottom: 15px;
+        line-height: 1.6;
+    }
+    .contact-info a {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+    }
+    .contact-info a:hover {
+        color: #60a5fa;
+    }
+
+    /* Workflow & Get Started Container Styling */
+    .workflow-container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 30px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+        text-align: center;
+    }
+    .workflow-img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: 20px auto 0 auto;
+    }
+    .pdf-btn-wrapper {
+        margin: 20px 0 30px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Concept Breakdown Layout Styles */
+    .concept-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 30px;
+        margin: 20px auto;
+        text-align: left;
+        max-width: 900px;
+    }
+    .concept-card h3 {
+        color: #60a5fa;
+        font-size: 22px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 8px;
+    }
+    .concept-card p {
+        color: #cbd5e1;
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 15px;
+    }
+    .concept-card ul {
+        margin-left: 20px;
+        color: #cbd5e1;
+        margin-bottom: 15px;
+    }
+    .concept-card li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    /* Info Reference List Styles */
+    .info-links-list {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0 0 0;
+    }
+    .info-links-list li {
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+    }
+    .info-links-list i {
+        margin-right: 12px;
+        font-size: 18px;
+    }
+    .info-links-list a {
+        color: #60a5fa;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+    .info-links-list a:hover {
+        color: #3b82f6;
+        text-decoration: underline;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Our Cloud & DevOps Project Showcase</h1>
-        <p>Deployed automatically via AWS CI/CD Pipeline</p>
-    </header>
-    <main>
-        <section class="card">
-            <h2>System Architecture</h2>
-            <p>This static website is hosted on AWS S3, utilizing AWS CodeBuild and CodePipeline for continuous deployment from GitHub.</p>
-        </section>
-    </main>
-    <footer>
-        <p>© 2026 DevOps Team Success</p>
-    </footer>
+
+<nav>
+<div class="logo">
+<i class="fa-solid fa-cloud"></i> CICD DEMO
+</div>
+
+<ul>
+<li><a href="#home-view">Home</a></li>
+<li><a href="#about-view">About</a></li>
+<li><a href="#services-view">Services</a></li>
+<li><a href="#contact-view">Contact</a></li>
+</ul>
+
+<button onclick="window.location.hash = '#get-started-view'">Get Started</button>
+</nav>
+
+<div id="home-view" class="page-view active">
+    <section class="hero">
+        <div class="hero-left">
+            <p class="tag">AUTOMATED DEPLOYMENT</p>
+            <h1>
+            Automated Deployment<br>
+            of Web Application<br>
+            Using <span>AWS CodePipeline</span>
+            </h1>
+            <p>
+            This project demonstrates a CI/CD pipeline using AWS services.
+            Every code change is automatically built and deployed.
+            </p>
+            <div class="buttons">
+                <a href="https://github.com/sheematabasum-06/devops-project-showcase" target="_blank" class="btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="#learn-more-view" class="btn-secondary">
+                    Learn More
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-right">
+            <div class="diagram">
+                <div class="box">GitHub</div>
+                <span>→</span>
+                <div class="box">CodePipeline</div>
+                <span>→</span>
+                <div class="box">CodeBuild</div>
+                <span>→</span>
+                <div class="box">Amazon S3</div>
+                <span>→</span>
+                <div class="box">Live Site</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat">
+            <h2>100+</h2>
+            <p>Lines of Code</p>
+        </div>
+        <div class="stat">
+            <h2>4</h2>
+            <p>AWS Services</p>
+        </div>
+        <div class="stat">
+            <h2>100%</h2>
+            <p>Automated</p>
+        </div>
+        <div class="stat">
+            <h2>Live</h2>
+            <p>Website</p>
+        </div>
+    </section>
+</div>
+
+<div id="about-view" class="page-view">
+    <section class="about" style="margin-top: 0; min-height: calc(100vh - 80px);">
+        <h2>About This Project</h2>
+
+        <p class="about-text-p">
+        The DevOps Project Showcase Website is developed to demonstrate the implementation
+        of Continuous Integration and Continuous Deployment (CI/CD) using AWS services.
+        The project automates the deployment of a web application through AWS CodePipeline,
+        eliminating manual deployment tasks and improving efficiency.
+        </p>
+
+        <p class="about-text-p">
+        The website source code is stored in a GitHub repository. Whenever changes are
+        pushed to the repository, AWS CodePipeline automatically detects the updates,
+        triggers the build process through AWS CodeBuild, and deploys the latest version
+        of the website to Amazon S3. This ensures faster, reliable, and consistent
+        application delivery.
+        </p>
+
+        <p class="about-text-p">
+        This project showcases the practical application of DevOps principles, cloud
+        computing technologies, version control systems, and deployment automation.
+        It helps developers understand modern software development practices and the
+        importance of CI/CD pipelines in delivering high-quality applications.
+        </p>
+
+        <p class="about-text-p" style="margin-top: 30px; color: #dbeafe;">
+        <b>Version:</b> 1.0.0<br>
+        <b>Technology Stack:</b> HTML, CSS, JavaScript, GitHub, AWS CodePipeline,
+        AWS CodeBuild, Amazon S3
+        </p>
+
+        <footer>
+            <div class="footer-content">
+                <h3>DevOps Project Showcase</h3>
+                <p>Automated Deployment of Web Application Using AWS CodePipeline</p>
+                <p class="copyright">© 2026 DevOps Project Showcase Team. All Rights Reserved.</p>
+                <p class="trademark">
+                    AWS®, Amazon S3®, AWS CodePipeline®, and AWS CodeBuild® are trademarks
+                    of Amazon Technologies, Inc. GitHub® is a trademark of GitHub, Inc.
+                    All other trademarks belong to their respective owners.
+                </p>
+                <p class="academic">This website is developed for academic and educational purposes only.</p>
+            </div>
+        </footer>
+    </section>
+</div>
+
+<div id="services-view" class="page-view">
+    <section class="about" style="margin-top: 0; min-height: calc(100vh - 80px); padding-bottom: 40px;">
+        <h2 style="margin-bottom: 40px;">DevOps Tools & Services</h2>
+
+        <div class="service">
+            <div class="service-card">
+                <h3>GitHub Repository</h3>
+                <p>
+                GitHub is used as a version control system to store, manage, and track changes
+                in the website source code. It enables collaboration among team members and
+                serves as the source stage for the CI/CD pipeline.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>AWS CodePipeline</h3>
+                <p>
+                AWS CodePipeline automates the deployment workflow by continuously monitoring
+                the GitHub repository for code changes and executing the deployment process
+                automatically.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>AWS CodeBuild</h3>
+                <p>
+                AWS CodeBuild compiles, tests, and prepares the application for deployment.
+                It ensures that the latest code is validated before being deployed.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Amazon S3 Hosting</h3>
+                <p>
+                Amazon S3 provides secure and scalable static website hosting. The website
+                files are automatically deployed to the S3 bucket, making them accessible
+                through a public URL.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <h3>Continuous Integration & Continuous Deployment (CI/CD)</h3>
+                <p>
+                The CI/CD pipeline automates the process of integrating code changes,
+                building the application, and deploying updates to the live website,
+                reducing manual effort and deployment errors.
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div id="contact-view" class="page-view">
+    <section class="about" style="margin-top: 0; min-height: calc(100vh - 80px); padding-bottom: 40px;">
+        <h2>Contact Us</h2>
+
+        <div class="contact-info">
+            <p>
+            For any queries or feedback regarding this project,
+            please contact our team.
+            </p>
+            
+            <p style="margin-top: 20px;">
+                <i class="fa-solid fa-envelope" style="color: #2563eb; margin-right: 8px;"></i>
+                <strong>Email:</strong> <a href="mailto:devopsproject@gmail.com">devopsproject@gmail.com</a>
+            </p>
+
+            <p>
+                <i class="fa-brands fa-github" style="color: #2563eb; margin-right: 8px;"></i>
+                <strong>GitHub Repository:</strong> <a href="https://github.com/sheematabasum-06" target="_blank">github.com/sheematabasum-06</a>
+            </p>
+        </div>
+    </section>
+</div>
+
+<div id="get-started-view" class="page-view">
+    <div class="workflow-container">
+        <h2 style="color: #111827; font-size: 32px;">Architecture & Workflow</h2>
+        
+        <div class="pdf-btn-wrapper">
+            <a href="project-report.pdf" target="_blank" class="btn-primary" style="text-decoration: none;">
+                <i class="fa-solid fa-file-pdf"></i> View Project PDF Documentation
+            </a>
+        </div>
+
+        <img src="get started image.png" alt="Automated Deployment Workflow" class="workflow-img">
+    </div>
+</div>
+
+<div id="learn-more-view" class="page-view">
+    <section class="about" style="margin-top: 0; min-height: calc(100vh - 80px); padding-bottom: 60px;">
+        <h2 style="margin-bottom: 10px;">Pipeline Artifacts & Workflow Architecture</h2>
+        <p class="about-text-p" style="color: #94a3b8; font-size: 16px;">Deep dive into data bundling execution logic inside AWS CodePipeline</p>
+
+        <div class="concept-card">
+            <h3>Understanding Pipeline Artifacts</h3>
+            <p>The entire lifecycle of AWS CodePipeline relies heavily on artifacts. Artifacts are the data bundles (like your source code, compiled binaries, or zipped deployment packages) that pass from one stage to the next.</p>
+            <ul>
+                <li><strong>Input Artifacts:</strong> The files that an action works on. For example, the Build stage takes raw repository files as its input artifact.</li>
+                <li><strong>Output Artifacts:</strong> The files generated by an action. The Build stage outputs a compressed zip folder (like a production-ready /dist folder) to be deployed.</li>
+                <li><strong>Storage Handling:</strong> CodePipeline seamlessly manages this by creating an Amazon S3 bucket behind the scenes. Every stage encrypts, compresses, and uploads its outputs to this bucket so the subsequent step can safely download them.</li>
+            </ul>
+        </div>
+
+        <h2 style="margin-top: 50px; margin-bottom: 10px;">🛠️ Advanced Pipeline Concepts</h2>
+        <p class="about-text-p" style="color: #94a3b8; font-size: 16px;">Core elements driving enterprise-grade production reliability standards</p>
+
+        <div class="concept-card">
+            <h3>1. Manual Approvals</h3>
+            <p>You don't always want your code to push directly to production without a human sanity check. You can insert a Manual Approval action directly between your staging build and production deployment.</p>
+            <ul>
+                <li>CodePipeline pauses execution at this step.</li>
+                <li>It sends a notification via Amazon SNS (Simple Notification Service) to an administrator's email or Slack channel.</li>
+                <li>The pipeline only resumes once a reviewer clicks "Approve".</li>
+            </ul>
+        </div>
+
+        <div class="concept-card">
+            <h3>2. Sequential vs. Parallel Actions</h3>
+            <p>Stages are not limited to one single action block execution flow:</p>
+            <ul>
+                <li><strong>Sequential actions:</strong> Execute one right after another (e.g., Run Unit Tests → Run Security Scan).</li>
+                <li><strong>Parallel actions:</strong> Run at the exact same time to speed up your pipeline delivery lifecycle execution loops (e.g., Deploying to two separate regional servers simultaneously, or running linting tests while checking dependencies).</li>
+            </ul>
+        </div>
+
+        <div class="concept-card">
+            <h3>3. Pipeline Transitions</h3>
+            <p>Transitions are the structural links connecting individual pipeline stages together. You can disable a transition via the AWS management console to actively freeze running deployments.</p>
+            <p>This implementation methodology is incredibly useful during strict architecture maintenance windows or when actively debugging a critical failed production issue, as it safely blocks new structural branch commits from pushing forward into your target cloud instances until you manually re-enable it.</p>
+        </div>
+
+        <h2 style="margin-top: 50px; margin-bottom: 10px;">For More Information</h2>
+        <p class="about-text-p" style="color: #94a3b8; font-size: 16px;">Official guides and structural video walkthroughs on AWS CodePipeline implementations</p>
+
+        <div class="concept-card">
+            <h3>Reference Material & Documentation</h3>
+            <p>Review these additional video deep dives and technical setup resources to strengthen your understanding of CI/CD automations:</p>
+            <ul class="info-links-list">
+                <li>
+                    <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
+                    <a href="https://www.youtube.com/watch?v=5Nn8oCsdU7A" target="_blank">Use AWS CodePipeline for DevOps and CI/CD - Core Architecture Breakdown</a>
+                </li>
+                <li>
+                    <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
+                    <a href="https://www.youtube.com/watch?v=L1kDhSb_wd0" target="_blank">AWS CodePipeline Tutorial - Building out Enterprise Resource Stages</a>
+                </li>
+                <li>
+                    <i class="fa-brands fa-youtube" style="color: #ef4444;"></i>
+                    <a href="https://www.youtube.com/watch?v=E-YanBx38Cs" target="_blank">Build a CI/CD Pipeline with AWS CodePipeline - Training and Demo Walkthrough</a>
+                </li>
+                <li>
+                    <i class="fa-solid fa-book" style="color: #3b82f6;"></i>
+                    <a href="https://docs.aws.amazon.com/codepipeline/latest/userguide/tutorials-simple-s3.html" target="_blank">Official AWS Documentation: CodePipeline Amazon S3 Static Website Tutorial</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+
+<script>
+    function handleRouting() {
+        const hash = window.location.hash || '#home-view';
+        
+        document.querySelectorAll('.page-view').forEach(view => {
+            view.classList.remove('active');
+        });
+        
+        const targetView = document.querySelector(hash);
+        if (targetView) {
+            targetView.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    }
+
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('load', handleRouting);
+</script>
+
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html>
->>>>>>> 2e9dc7aa0c4cbd9969be14cc54b9378ba2fd87d1

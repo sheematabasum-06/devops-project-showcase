@@ -1,26 +1,237 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f7f9fc;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spacing for the cloud icon */
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #111827;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
+    color: #2563eb;
+}
+
+button {
+    padding: 12px 25px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px 8%;
+    gap: 50px;
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.tag {
+    color: #2563eb;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: 60px;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #2563eb;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px; /* Spacing for the GitHub icon */
+    font-weight: 600;
+}
+
+.btn-secondary {
+    padding: 15px 25px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #111827;
+    font-weight: 600;
+    background: white;
+}
+
+/* DIAGRAM */
+.hero-right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.diagram {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box {
+    background: #2563eb;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.diagram span {
+    color: #64748b;
+    font-weight: bold;
+}
+
+/* STATS */
+.stats {
+    width: 84%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.08);
+}
+
+.stat {
     text-align: center;
 }
-header {
-    background-color: #232f3e; /* AWS Squid Ink Blue */
+
+.stat h2 {
+    font-size: 42px;
+    color: #2563eb;
+}
+
+.stat p {
+    color: #64748b;
+    margin-top: 5px;
+}
+
+/* ABOUT */
+.about {
+    margin-top: 60px;
+    padding: 80px 8%;
+    text-align: center;
+    background: #071f4e;
     color: white;
-    padding: 2rem;
 }
-.card {
-    background: white;
-    max-width: 600px;
-    margin: 3rem auto;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+.about h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
 }
+
+.about p {
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    line-height: 1.8;
+    font-size: 18px;
+    color: #cbd5e1;
+}
+
+/* FOOTER */
 footer {
-    margin-top: 5rem;
-    font-size: 0.9rem;
-    color: #666;
+    background: #051637; /* Clean, dark background separation from the about section */
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.footer-content h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.footer-content p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.copyright {
+    font-weight: 600;
+    color: #dbeafe;
+}
+
+.trademark {
+    font-size: 14px;
+    color: #cbd5e1;
+}
+
+.academic {
+    font-size: 14px;
+    color: #94a3b8;
 }
